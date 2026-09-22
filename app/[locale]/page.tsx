@@ -2,17 +2,11 @@ import Link from 'next/link';
 import AccentStyle from '@/components/AccentStyle';
 import CreateTabs from '@/components/CreateTabs';
 import { getRecentCVs } from '@/lib/cvStore';
+import { formatDate } from '@/lib/format';
 import { getDictionary, isLocale, type Locale } from '@/lib/i18n';
 import { accentOptions } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
-
-function formatDate(iso: string, locale: Locale): string {
-  return new Intl.DateTimeFormat(locale === 'cs' ? 'cs-CZ' : 'en-GB', {
-    dateStyle: 'medium',
-    timeStyle: 'short',
-  }).format(new Date(iso));
-}
 
 export default async function Home({ params }: { params: { locale: string } }) {
   const locale: Locale = isLocale(params.locale) ? params.locale : 'cs';
@@ -48,6 +42,11 @@ export default async function Home({ params }: { params: { locale: string } }) {
                   </div>
                 </Link>
               ))}
+            </div>
+            <div style={{ textAlign: 'center', marginTop: 16 }}>
+              <Link href={`/${locale}/all`} className="recent-list__link">
+                {dict.home.viewAllAction}
+              </Link>
             </div>
           </section>
         )}

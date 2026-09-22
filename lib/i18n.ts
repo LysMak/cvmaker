@@ -9,6 +9,7 @@ export interface Dictionary {
     heroSubtitle: string;
     disclaimer: string;
     recentTitle: string;
+    viewAllAction: string;
     viewAction: string;
     tabManual: string;
     tabPaste: string;
@@ -107,6 +108,13 @@ export interface Dictionary {
     githubLabel: string;
     authorLabel: string;
   };
+  all: {
+    title: string;
+    empty: string;
+    prevPage: string;
+    nextPage: string;
+    pageInfo: string;
+  };
 }
 
 const cs: Dictionary = {
@@ -116,6 +124,7 @@ const cs: Dictionary = {
     heroSubtitle: 'Vyplňte údaje níže — okamžitě je zpracujeme do přehledné osobní stránky.',
     disclaimer: 'Toto je pouze koncept / ukázkový projekt. Všechny vyplněné údaje zůstávají veřejně viditelné komukoliv na internetu. Nevyplňujte prosím citlivé nebo důležité osobní informace.',
     recentTitle: 'Naposledy vytvořené životopisy',
+    viewAllAction: 'Zobrazit všechny životopisy →',
     viewAction: 'Zobrazit',
     tabManual: 'Vyplnit formulář',
     tabPaste: 'Vložit text CV',
@@ -214,6 +223,13 @@ const cs: Dictionary = {
     githubLabel: 'Zdrojový kód na GitHubu',
     authorLabel: 'Autor',
   },
+  all: {
+    title: 'Všechny životopisy',
+    empty: 'Zatím nebyl vytvořen žádný životopis.',
+    prevPage: '← Předchozí',
+    nextPage: 'Další →',
+    pageInfo: 'Strana {current} z {total}',
+  },
 };
 
 const en: Dictionary = {
@@ -223,6 +239,7 @@ const en: Dictionary = {
     heroSubtitle: "Fill in the details below — we'll instantly turn them into a clear personal page.",
     disclaimer: "This is only a concept / demo project. Everything you enter stays publicly visible to anyone on the internet. Please don't enter sensitive or important personal information.",
     recentTitle: 'Recently created CVs',
+    viewAllAction: 'View all CVs →',
     viewAction: 'View',
     tabManual: 'Fill in the form',
     tabPaste: 'Paste CV text',
@@ -320,6 +337,13 @@ const en: Dictionary = {
     demoNote: 'This is a demo project built as a showcase, not a commercial service.',
     githubLabel: 'Source code on GitHub',
     authorLabel: 'Author',
+  },
+  all: {
+    title: 'All CVs',
+    empty: 'No CVs have been created yet.',
+    prevPage: '← Previous',
+    nextPage: 'Next →',
+    pageInfo: 'Page {current} of {total}',
   },
 };
 

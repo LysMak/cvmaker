@@ -84,6 +84,33 @@ export async function getRecentCVs(limit = 10): Promise<CV[]> {
   return (data as CVRow[]).map(rowToCV);
 }
 
+export async function getAllCVSlugs(): Promise<{ slug: string; createdAt: string }[]> {
+  const { data, error } = await supabase
+    .from('cvs')
+    .select('slug, created_at')
+    .order('created_at', { ascending: false });
+
+  if (error) throw new Error(error.message);
+  return (data as { slug: string; created_at: string }[]).map((row) => ({
+    slug: row.slug,
+    createdAt: row.created_at,
+  }));
+}
+
+export async function getCVsPage(page: number, pageSize = 20): Promise<{ cvs: CV[]; total: number }> {
+  const from = Math.max(page - 1, 0) * pageSize;
+  const to = from + pageSize - 1;
+
+  const { data, error, count } = await supabase
+    .from('cvs')
+    .select('*', { count: 'exact' })
+    .order('created_at', { ascending: false })
+    .range(from, to);
+
+  if (error) throw new Error(error.message);
+  return { cvs: (data as CVRow[]).map(rowToCV), total: count ?? 0 };
+}
+
 export async function getCVBySlug(slug: string): Promise<CV | undefined> {
   const { data, error } = await supabase
     .from('cvs')

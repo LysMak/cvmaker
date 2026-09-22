@@ -569,6 +569,43 @@ input, textarea, button {
   transform: translateX(4px);
 }
 
+/* Pagination */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+  font-size: 14px;
+}
+
+.pagination a {
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-navy);
+  padding: 8px 16px;
+  font-weight: 700;
+  border-radius: var(--radius);
+  transition: border-color var(--transition), background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.pagination a:hover {
+  border-color: var(--color-navy);
+  background: var(--color-surface-alt);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px -6px rgba(22, 35, 63, 0.3);
+}
+
+.pagination__disabled {
+  padding: 8px 16px;
+  color: var(--color-border-strong);
+}
+
+.pagination__info {
+  color: var(--color-muted);
+}
+
 /* CV display */
 
 .cv-header {
