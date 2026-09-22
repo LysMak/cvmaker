@@ -6,15 +6,12 @@ export const alt = 'CV preview';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-const FONT_URL = 'https://raw.githubusercontent.com/google/fonts/main/ofl/roboto/Roboto%5Bwdth%2Cwght%5D.ttf';
-
-async function loadFont(): Promise<ArrayBuffer | null> {
+async function loadFont(): Promise<ArrayBuffer | undefined> {
   try {
-    const res = await fetch(FONT_URL);
-    if (!res.ok) return null;
+    const res = await fetch(new URL('../../../../assets/fonts/Roboto-Variable.ttf', import.meta.url));
     return await res.arrayBuffer();
   } catch {
-    return null;
+    return undefined;
   }
 }
 
