@@ -91,6 +91,9 @@ export interface Dictionary {
     shareEmailButton: string;
     shareEmailSubject: string;
     shareEmailBody: string;
+    customizeAction: string;
+    saveDesignButton: string;
+    savingDesign: string;
   };
   edit: {
     title: string;
@@ -195,6 +198,9 @@ const cs: Dictionary = {
     shareEmailButton: 'Poslat e-mailem',
     shareEmailSubject: 'Životopis',
     shareEmailBody: 'Dobrý den,\n\nposílám odkaz na životopis:',
+    customizeAction: '🎨 Vzhled',
+    saveDesignButton: 'Uložit vzhled',
+    savingDesign: 'Ukládáme…',
   },
   edit: {
     title: 'Upravit životopis',
@@ -299,6 +305,9 @@ const en: Dictionary = {
     shareEmailButton: 'Send by email',
     shareEmailSubject: 'CV',
     shareEmailBody: 'Hello,\n\nhere is the link to the CV:',
+    customizeAction: '🎨 Design',
+    saveDesignButton: 'Save design',
+    savingDesign: 'Saving…',
   },
   edit: {
     title: 'Edit CV',

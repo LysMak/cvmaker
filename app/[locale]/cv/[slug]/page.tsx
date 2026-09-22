@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CVDisplay from '@/components/CVDisplay';
 import DeleteButton from '@/components/DeleteButton';
+import DesignPanel from '@/components/DesignPanel';
 import PrintButton from '@/components/PrintButton';
 import ShareByEmail from '@/components/ShareByEmail';
 import { getCVBySlug } from '@/lib/cvStore';
@@ -89,9 +90,20 @@ export default async function CVPage({
         )}
       </div>
       {isOwner && (
-        <div className="edit-banner">
-          <strong>{dict.cv.editBannerTitle}</strong> {dict.cv.editBannerBody}
-        </div>
+        <>
+          <div className="edit-banner">
+            <strong>{dict.cv.editBannerTitle}</strong> {dict.cv.editBannerBody}
+          </div>
+          <DesignPanel
+            slug={cv.slug}
+            editToken={cv.editToken}
+            locale={locale}
+            initialTemplate={cv.template}
+            initialAccent={cv.accent}
+            formDict={dict.form}
+            cvDict={dict.cv}
+          />
+        </>
       )}
     </CVDisplay>
   );

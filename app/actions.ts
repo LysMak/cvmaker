@@ -1,7 +1,7 @@
 'use server';
 
 import { redirect } from 'next/navigation';
-import { createCV, deleteCV, updateCV } from '@/lib/cvStore';
+import { createCV, deleteCV, updateCV, updateCVDesign } from '@/lib/cvStore';
 import { parseCVText } from '@/lib/openai';
 import { formatPhone } from '@/lib/phone';
 import { accentOptions, templates, type CVInput, type Template } from '@/lib/types';
@@ -144,6 +144,19 @@ export async function updateCVAction(formData: FormData) {
   }
 
   const cv = await updateCV(slug, editToken, input);
+  if (!cv) {
+    throw new Error('Not authorized to edit this CV');
+  }
+
+  redirect(`/${locale}/cv/${cv.slug}?token=${editToken}`);
+}
+
+export async function updateCVDesignAction(formData: FormData) {
+  const slug = str(formData.get('slug'));
+  const editToken = str(formData.get('editToken'));
+  const locale = str(formData.get('locale')) || 'cs';
+
+  const cv = await updateCVDesign(slug, editToken, readTemplate(formData), readAccent(formData));
   if (!cv) {
     throw new Error('Not authorized to edit this CV');
   }

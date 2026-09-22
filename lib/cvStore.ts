@@ -127,6 +127,24 @@ export async function updateCV(slug: string, editToken: string, input: CVInput):
   return data ? rowToCV(data as CVRow) : undefined;
 }
 
+export async function updateCVDesign(
+  slug: string,
+  editToken: string,
+  template: CV['template'],
+  accent: string,
+): Promise<CV | undefined> {
+  const { data, error } = await supabase
+    .from('cvs')
+    .update({ template, accent })
+    .eq('slug', slug)
+    .eq('edit_token', editToken)
+    .select()
+    .maybeSingle();
+
+  if (error) throw new Error(error.message);
+  return data ? rowToCV(data as CVRow) : undefined;
+}
+
 export async function deleteCV(slug: string, editToken: string): Promise<boolean> {
   const { data, error } = await supabase
     .from('cvs')

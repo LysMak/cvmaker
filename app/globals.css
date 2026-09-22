@@ -1083,6 +1083,43 @@ input, textarea, button {
   transition-duration: 90ms;
 }
 
+.design-toggle {
+  margin-bottom: 16px;
+}
+
+.design-toggle__btn {
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-navy);
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.design-toggle__btn:hover {
+  border-color: var(--color-navy);
+  background: var(--color-surface-alt);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px -6px rgba(22, 35, 63, 0.3);
+}
+
+.design-toggle__btn:active {
+  transform: translateY(0) scale(0.96);
+  transition-duration: 90ms;
+}
+
+.design-panel {
+  margin-top: 12px;
+  padding: 20px 24px;
+}
+
+.design-panel .btn-primary {
+  margin-top: 16px;
+}
+
 /* ============ Template: Modern (gradient / glossy) ============ */
 
 .cv-root[data-template='modern'] {
@@ -1459,7 +1496,8 @@ input, textarea, button {
   .recent,
   .cv-actions,
   .edit-banner,
-  .share-email {
+  .share-email,
+  .design-toggle {
     display: none !important;
   }
 
