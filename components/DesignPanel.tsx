@@ -14,7 +14,6 @@ const templateLabelKey: Record<Template, keyof Dictionary['form']> = {
 
 export default function DesignPanel({
   slug,
-  editToken,
   locale,
   initialTemplate,
   initialAccent,
@@ -22,7 +21,6 @@ export default function DesignPanel({
   cvDict,
 }: {
   slug: string;
-  editToken: string;
   locale: Locale;
   initialTemplate: Template;
   initialAccent: string;
@@ -54,7 +52,6 @@ export default function DesignPanel({
       {open && (
         <form action={updateCVDesignAction} className="card design-panel">
           <input type="hidden" name="slug" value={slug} />
-          <input type="hidden" name="editToken" value={editToken} />
           <input type="hidden" name="locale" value={locale} />
           <input type="hidden" name="template" value={template} />
           <input type="hidden" name="accent" value={accent} />

@@ -129,7 +129,6 @@ export async function updateCV(slug: string, editToken: string, input: CVInput):
 
 export async function updateCVDesign(
   slug: string,
-  editToken: string,
   template: CV['template'],
   accent: string,
 ): Promise<CV | undefined> {
@@ -137,7 +136,6 @@ export async function updateCVDesign(
     .from('cvs')
     .update({ template, accent })
     .eq('slug', slug)
-    .eq('edit_token', editToken)
     .select()
     .maybeSingle();
 

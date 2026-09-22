@@ -90,21 +90,18 @@ export default async function CVPage({
         )}
       </div>
       {isOwner && (
-        <>
-          <div className="edit-banner">
-            <strong>{dict.cv.editBannerTitle}</strong> {dict.cv.editBannerBody}
-          </div>
-          <DesignPanel
-            slug={cv.slug}
-            editToken={cv.editToken}
-            locale={locale}
-            initialTemplate={cv.template}
-            initialAccent={cv.accent}
-            formDict={dict.form}
-            cvDict={dict.cv}
-          />
-        </>
+        <div className="edit-banner">
+          <strong>{dict.cv.editBannerTitle}</strong> {dict.cv.editBannerBody}
+        </div>
       )}
+      <DesignPanel
+        slug={cv.slug}
+        locale={locale}
+        initialTemplate={cv.template}
+        initialAccent={cv.accent}
+        formDict={dict.form}
+        cvDict={dict.cv}
+      />
     </CVDisplay>
   );
 }

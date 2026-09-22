@@ -153,15 +153,14 @@ export async function updateCVAction(formData: FormData) {
 
 export async function updateCVDesignAction(formData: FormData) {
   const slug = str(formData.get('slug'));
-  const editToken = str(formData.get('editToken'));
   const locale = str(formData.get('locale')) || 'cs';
 
-  const cv = await updateCVDesign(slug, editToken, readTemplate(formData), readAccent(formData));
+  const cv = await updateCVDesign(slug, readTemplate(formData), readAccent(formData));
   if (!cv) {
-    throw new Error('Not authorized to edit this CV');
+    throw new Error('CV not found');
   }
 
-  redirect(`/${locale}/cv/${cv.slug}?token=${editToken}`);
+  redirect(`/${locale}/cv/${cv.slug}`);
 }
 
 export async function deleteCVAction(formData: FormData) {
