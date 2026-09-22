@@ -515,6 +515,7 @@ input, textarea, button {
   font-size: 19px;
   color: var(--color-navy);
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .recent-list {
