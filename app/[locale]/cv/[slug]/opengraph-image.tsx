@@ -1,5 +1,3 @@
-import fs from 'fs';
-import path from 'path';
 import { ImageResponse } from 'next/og';
 import { getCVBySlug } from '@/lib/cvStore';
 
@@ -8,10 +6,20 @@ export const alt = 'CV preview';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-const fontData = fs.readFileSync(path.join(process.cwd(), 'assets/fonts/Roboto-Variable.ttf'));
+const FONT_URL = 'https://raw.githubusercontent.com/google/fonts/main/ofl/roboto/Roboto%5Bwdth%2Cwght%5D.ttf';
+
+async function loadFont(): Promise<ArrayBuffer | null> {
+  try {
+    const res = await fetch(FONT_URL);
+    if (!res.ok) return null;
+    return await res.arrayBuffer();
+  } catch {
+    return null;
+  }
+}
 
 export default async function Image({ params }: { params: { slug: string } }) {
-  const cv = await getCVBySlug(params.slug);
+  const [cv, fontData] = await Promise.all([getCVBySlug(params.slug), loadFont()]);
 
   const name = cv?.name || 'CV';
   const headline = cv?.headline || '';
@@ -49,7 +57,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
     ),
     {
       ...size,
-      fonts: [{ name: 'Roboto', data: fontData, style: 'normal', weight: 400 }],
+      fonts: fontData ? [{ name: 'Roboto', data: fontData, style: 'normal', weight: 400 }] : undefined,
     },
   );
 }
