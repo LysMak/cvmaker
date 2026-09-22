@@ -136,7 +136,7 @@ export default function CVForm({
                 <input name="education_period" placeholder={dict.educationPeriodPlaceholder} defaultValue={row.data?.period} />
               </div>
             </div>
-            <div className="field" style={{ marginBottom: 0 }}>
+            <div className="field field--center" style={{ marginBottom: 0 }}>
               <label>{dict.educationNoteLabel}</label>
               <input name="education_note" placeholder={dict.educationNotePlaceholder} defaultValue={row.data?.note} />
             </div>
@@ -198,7 +198,7 @@ export default function CVForm({
 
       <div className="form-section">
         <h3>{dict.designSectionTitle}</h3>
-        <div className="field">
+        <div className="field field--center">
           <label>{dict.templateLabel}</label>
           <div className="option-grid">
             {templates.map((t) => (
@@ -213,7 +213,7 @@ export default function CVForm({
             ))}
           </div>
         </div>
-        <div className="field" style={{ marginBottom: 0 }}>
+        <div className="field field--center" style={{ marginBottom: 0 }}>
           <label>{dict.accentLabel}</label>
           <div className="option-grid">
             {accentOptions.map((a) => (

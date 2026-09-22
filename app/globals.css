@@ -377,6 +377,11 @@ input, textarea, button {
   font-size: 18px;
   color: var(--color-navy);
   margin-bottom: 14px;
+  text-align: center;
+}
+
+.field--center {
+  text-align: center;
 }
 
 .row-card {

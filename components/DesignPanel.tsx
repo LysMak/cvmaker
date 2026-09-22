@@ -56,7 +56,7 @@ export default function DesignPanel({
           <input type="hidden" name="template" value={template} />
           <input type="hidden" name="accent" value={accent} />
 
-          <div className="field">
+          <div className="field field--center">
             <label>{formDict.templateLabel}</label>
             <div className="option-grid">
               {templates.map((t) => (
@@ -72,7 +72,7 @@ export default function DesignPanel({
             </div>
           </div>
 
-          <div className="field" style={{ marginBottom: 0 }}>
+          <div className="field field--center" style={{ marginBottom: 0 }}>
             <label>{formDict.accentLabel}</label>
             <div className="option-grid">
               {accentOptions.map((a) => (
